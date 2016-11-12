@@ -4,7 +4,7 @@ export default function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('challengeTag', {
-      url: '/challenge/:challengeId/tag',
+      url: '/challenges/:challengeId/tag',
       template: '<challenge-tag></challenge-tag>'
     });
 }

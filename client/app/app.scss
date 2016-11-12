@@ -17,6 +17,11 @@ $fa-font-path: '/assets/fonts/font-awesome/';
   padding: 0.2em 0;
 }
 
+button:focus, button:active, .btn:focus, .btn:active  {
+  outline:none;
+}
+
+
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';

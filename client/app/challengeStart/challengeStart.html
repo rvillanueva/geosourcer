@@ -1,1 +1,7 @@
-<div>This is the challengeStart view.</div>
+<div class="container">
+  <h2>{{startCtrl.challenge.title}}</h2>
+  <br>
+  {{startCtrl.challenge.description}}
+  <br><br>
+  <button class="btn btn-primary" ui-sref="challengeTag({challengeId: startCtrl.challenge._id})">Start</button>
+</div>

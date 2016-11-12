@@ -1,6 +1,15 @@
-<div class="container">
-  <div class="col-md-8">
-  <div id="map" style="height:500px"></div>
-</div>
-<div class="col-md-4"></div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="col-md-8">
+        <div id="map" style="height:600px"></div>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-default" ng-repeat="(c, class) in tagCtrl.challenge.classes" ng-class="{'btn-primary': tagCtrl.selectedClassIndex == c, 'btn-default': tagCtrl.selectedClassIndex !== c}" style="width: 100%" ng-click="tagCtrl.selectedClassIndex = c;">{{class.name}}</button>
+        <br>
+        Click to add markers. Click it again to remove it.
+        <br>
+        <br>
+        <button class="btn btn-success" style="width:100%" ng-click="tagCtrl.save()">Save &amp; Next</button>
+      </div>
+  </div>
 </div>

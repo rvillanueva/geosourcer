@@ -130,11 +130,6 @@ module.exports = function makeWebpackConfig(options) {
     config.module = {
         preLoaders: [],
         loaders: [
-          // JSON LOADER
-          {
-            test: /\.json$/,
-            loader: 'json'
-          },
           {
             // JS LOADER
             // Reference: https://github.com/babel/babel-loader

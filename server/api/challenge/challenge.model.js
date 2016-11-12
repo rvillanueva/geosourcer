@@ -3,9 +3,24 @@
 import mongoose from 'mongoose';
 
 var ChallengeSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  title: String,
+  description: String,
+  search: {
+    targets: [
+      {
+        geo: {
+          lat: Number,
+          lng: Number
+        }
+      }
+    ],
+    radiusKm: Number
+  },
+  classes: [
+    {
+      name: String
+    }
+  ]
 });
 
 export default mongoose.model('Challenge', ChallengeSchema);

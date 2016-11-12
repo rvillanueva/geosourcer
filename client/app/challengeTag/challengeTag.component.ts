@@ -9,32 +9,108 @@ export class ChallengeTagComponent {
   L;
   mapboxKey;
   map;
+  markers = [];
+  myIcon;
   /*@ngInject*/
   constructor(appConfig) {
-    this.L = require('mapbox.js');
-    this.mapboxKey = 'pk.eyJ1IjoicnZpbGxhbnVldmEiLCJhIjoiY2l2ZmcyaHR0MDFobDJ5cDM5Z2l4ZGoyNSJ9.bP1AZd2tuj4YO-XwQz-xhA';
+    this.L = L;
+    this.mapboxKey = appConfig.mapboxKey;
     this.initMap();
-    var myIcon = L.icon({
-    	iconUrl: './assets/images/my-icon.png',
-    });
-
+    this.markers = [];
+    this.map;
+    this.challenge = {
+      classes: [
+        {
+          name: 'Forest'
+        },
+        {
+          name: 'Water'
+        },
+        {
+          name: 'Other'
+        }
+      ]
+    }
+    this.selectedClassIndex = 0;
   }
 
-  initMap(){
+  initMap() {
     this.L.mapbox.accessToken = this.mapboxKey;
-    var map = L.mapbox.map('map', 'mapbox.satellite')
-      .setView([40, -74.50], 9);
-      map.on('click', function(e) {
-        L.marker(e.latlng).addTo(map);
+
+    this.map = this.L.mapbox.map('map', 'mapbox.satellite')
+      .setView([54.559322, -5.767822], 20)
+    this.removeControls(this.map);
+    this.map.on('click', e => {
+      this.handleClick(e)
     });
   }
+
+  removeControls(map){
+    /*map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.zoomControls.disable();
+    map.dragRotate.disable();
+    map.dragPan.disable();
+    map.keyboard.disable();
+    map.doubleClickZoom.disable();
+    map.touchZoomRotate.disable();*/
+
+  }
+
+  handleClick(e){
+    var marker = this.L.marker(e.latlng);
+    marker.on('click', e => {
+      this.handleMarkerClick(e);
+    });
+    this.markers.push(marker);
+    marker.addTo(this.map);
+  }
+
+  handleMarkerClick(e){
+    this.removeMarker(e.target);
+    e.originalEvent.preventDefault();
+  }
+
+  removeMarker(target){
+    this.map.removeLayer(target);
+    this.markers.forEach((marker, m) =>{
+      if(marker._leaflet_id == target._leaflet_id){
+        console.log('Splicing at ' + m)
+        this.markers.splice(m, 1);
+        console.log(this.markers);
+      }
+    })
+  }
+
+  save(){
+    console.log(this.markers)
+    this.posted = {
+      labels: []
+    }
+    this.markers.forEach((marker, m) => {
+      var label = {
+        geo: marker._latlng
+      }
+      this.posted.labels.push(label);
+    })
+    //save
+  }
+
+  /*
+  var myIcon = this.L.icon({
+    iconUrl: 'assets/images/my-icon.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+  });
+  */
 }
+
 
 export default angular.module('geosourcerApp.challengeTag', [uiRouter])
   .config(routes)
   .component('challengeTag', {
     template: require('./challengeTag.html'),
     controller: ChallengeTagComponent,
-    controllerAs: 'challengeTagCtrl'
+    controllerAs: 'tagCtrl'
   })
   .name;
