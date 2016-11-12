@@ -10,25 +10,40 @@ import User from '../api/user/user.model';
 Challenge.find({}).remove()
   .then(() => {
     Challenge.create({
-      title: 'Find illegal logging roads',
-      description: 'The World Forestry Foundation is working to stop deforestation in Brazil...',
+      title: 'Refugee Camp Monitoring',
+      description: 'The Humanitarian Foundation is monitoring the status of Syrian refugee camps. Help us identify which camps are temporary versus which are permanent.',
       search: {
         targets: [
           {
             geo: {
-              lat: 55,
-              lng: 55
+              lat: 37.363333,
+              lng: 40.271111
+            }
+          },
+          {
+            geo: {
+              lat: 36.984384,
+              lng: 36.61815
+            }
+          },
+          {
+            geo: {
+              lat: 37.413702,
+              lng: 41.393397
             }
           }
         ],
-        radiusKm: 2
+        radiusKm: 0.2
       },
       classes: [
         {
-          name: 'Forest'
+          name: 'Tents'
         },
         {
-          name: 'Water'
+          name: 'Permanent Structure'
+        },
+        {
+          name: 'Other'
         }
       ]
     });

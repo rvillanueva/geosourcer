@@ -10,51 +10,68 @@ export class ChallengeTagComponent {
   mapboxKey;
   map;
   markers = [];
+  challenge;
   myIcon;
+  geoLib;
+  target;
+  $http;
+  $q;
+  defaultZoom;
   /*@ngInject*/
-  constructor(appConfig) {
+
+  constructor($http, $q, $stateParams, appConfig) {
     this.L = L;
+    this.defaultZoom = 17;
     this.mapboxKey = appConfig.mapboxKey;
-    this.initMap();
+    this.challengeId = $stateParams.challengeId;
     this.markers = [];
+    this.geoLib = require('geolib');
     this.map;
-    this.challenge = {
-      classes: [
-        {
-          name: 'Forest'
-        },
-        {
-          name: 'Water'
-        },
-        {
-          name: 'Other'
-        }
-      ]
-    }
+    this.challenge;
+    this.$http = $http;
+    this.$q = $q;
+    this.target;
+    console.log(this.getChallenge)
+    this.getChallenge().then(challenge => {
+      this.challenge = challenge;
+      console.log(this.challenge);
+      this.initMap();
+    }).catch(err => {
+      console.log(err)
+    })
     this.selectedClassIndex = 0;
+  }
+
+  getChallenge(){
+    return this.$q((resolve, reject) => {
+      if(this.challengeId){
+        this.$http.get('/api/challenges/' + this.challengeId).success(challenge => {
+          resolve(challenge)
+        })
+        .error(err => {
+          reject(err)
+        })
+      } else {
+        reject();
+        alert('No challenge id');
+      }
+    });
   }
 
   initMap() {
     this.L.mapbox.accessToken = this.mapboxKey;
 
     this.map = this.L.mapbox.map('map', 'mapbox.satellite')
-      .setView([54.559322, -5.767822], 20)
     this.removeControls(this.map);
+    this.selectNewView();
     this.map.on('click', e => {
       this.handleClick(e)
     });
   }
 
-  removeControls(map){
-    /*map.scrollWheelZoom.disable();
-    map.boxZoom.disable();
-    map.zoomControls.disable();
-    map.dragRotate.disable();
-    map.dragPan.disable();
-    map.keyboard.disable();
-    map.doubleClickZoom.disable();
-    map.touchZoomRotate.disable();*/
 
+  removeControls(map){
+    //map.dragging.disable();
   }
 
   handleClick(e){
@@ -84,16 +101,50 @@ export class ChallengeTagComponent {
 
   save(){
     console.log(this.markers)
-    this.posted = {
-      labels: []
+    var posted = {
+      labels: [],
+      targetId: this.target_id,
+      challengeId: this.challenge._id,
+      viewCenter: this.viewCenter;
     }
     this.markers.forEach((marker, m) => {
       var label = {
         geo: marker._latlng
       }
-      this.posted.labels.push(label);
+      posted.labels.push(label);
     })
-    //save
+  this.$http.post('/api/challenges/' + this.challenge._id + '/labels', posted)
+    .success(res => {
+      this.clearAllMarkers();
+      this.selectNewView();
+    })
+    .catch(err => {
+      alert(err);
+    })
+  }
+
+  clearAllMarkers(){
+    this.markers.forEach((marker, m) => {
+      this.map.removeLayer(marker);
+    })
+    this.markers = []
+  }
+
+  selectNewView(){
+    this.target = this.challenge.search.targets[Math.floor(Math.random() * this.challenge.search.targets.length)];
+    var newBearing = Math.random() * 360;
+    var newCenter = this.geoLib.computeDestinationPoint({
+      latitude: this.target.geo.lat,
+      longitude: this.target.geo.lng
+    }, this.challenge.search.radiusKm*1000, newBearing);
+    this.map.setView([newCenter.latitude, newCenter.longitude], this.defaultZoom)
+    console.log(this.target, newCenter);
+    this.viewCenter = {
+      geo: {
+        lat: newCenter.latitude,
+        lng: newCenter.longitude
+      }
+    }
   }
 
   /*

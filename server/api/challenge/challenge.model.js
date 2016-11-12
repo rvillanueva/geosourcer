@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 var ChallengeSchema = new mongoose.Schema({
   title: String,
   description: String,
+  ownerId: String,
   search: {
     targets: [
       {

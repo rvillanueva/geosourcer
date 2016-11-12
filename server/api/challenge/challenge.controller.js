@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Challenge from './challenge.model';
+import Label from '../label/label.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -84,6 +85,24 @@ export function create(req, res) {
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
+
+// Creates a new Challenge in the DB
+export function submitLabels(req, res) {
+  var data = req.body;
+  var labels = [];
+  data.labels.forEach((label, l) => {
+    var newLabel = label;
+    newLabel.challengeId = data.challengeId;
+    newLabel.userId = req.user._id;
+    newLabel.targetId = data.targetId;
+    newLabel.viewCenter = data.viewCenter;
+    labels.push(newLabel);
+  })
+  return Label.create(labels)
+    .then(respondWithResult(res, 201))
+    .catch(handleError(res));
+}
+
 
 // Upserts the given Challenge in the DB at the specified ID
 export function upsert(req, res) {

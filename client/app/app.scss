@@ -21,13 +21,24 @@ button:focus, button:active, .btn:focus, .btn:active  {
   outline:none;
 }
 
+.navbar-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.8em;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
 
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
+@import 'browse/browse';
 @import 'challengeStart/challengeStart';
 @import 'challengeTag/challengeTag';
 @import 'main/main';
+@import 'manage/manage';
 @import '../components/footer/footer';
 @import '../components/modal/modal';
 @import '../components/oauth-buttons/oauth-buttons';

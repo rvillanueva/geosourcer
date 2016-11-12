@@ -11,6 +11,12 @@ var LabelSchema = new mongoose.Schema({
   userId: String,
   challengeId: String,
   targetId: String,
+  viewCenter: {
+    geo: {
+      lat: Number,
+      lng: Number
+    }
+  },
   created: Date
 });
 

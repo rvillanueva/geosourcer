@@ -1,15 +1,25 @@
 <div class="row">
   <div class="col-md-12">
-      <div class="col-md-8">
-        <div id="map" style="height:600px"></div>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-default" ng-repeat="(c, class) in tagCtrl.challenge.classes" ng-class="{'btn-primary': tagCtrl.selectedClassIndex == c, 'btn-default': tagCtrl.selectedClassIndex !== c}" style="width: 100%" ng-click="tagCtrl.selectedClassIndex = c;">{{class.name}}</button>
-        <br>
-        Click to add markers. Click it again to remove it.
-        <br>
-        <br>
-        <button class="btn btn-success" style="width:100%" ng-click="tagCtrl.save()">Save &amp; Next</button>
-      </div>
+    <div class="col-md-8">
+      <div id="map" style="height:600px"></div>
+    </div>
+    <div class="col-md-4">
+      <strong>Labels</strong>
+      <br>
+      <button class="btn btn-default" ng-repeat="(c, class) in tagCtrl.challenge.classes" ng-class="{'btn-primary': tagCtrl.selectedClassIndex == c, 'btn-default': tagCtrl.selectedClassIndex !== c}" style="width: 100%" ng-click="tagCtrl.selectedClassIndex = c;">{{class.name}}</button>
+      <br>
+      <br>
+      <p class="text-muted">
+        Click to add markers. Click one to remove it.
+      </p>
+      <p class="text-muted">
+        If the map is blank, recent satellite imagery may not exist for the given area. Press the Skip button below to access the next region.
+      </p>
+      <br>
+      <br>
+      <br>
+      <button class="btn btn-success" style="width:100%" ng-click="tagCtrl.save()">Save &amp; Next</button>
+      <button class="btn btn-default" style="width:100%" ng-click="tagCtrl.clearAllMarkers();tagCtrl.selectNewView()">Skip</button>
+    </div>
   </div>
 </div>

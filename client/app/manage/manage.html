@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-default pull-right" ui-sref="create"><i class="fa fa-plus"></i>&nbsp;New Challenge</button>
+      <h2>Manage Challenges</h2>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default" ng-repeat="challenge in manageCtrl.challenges">
+        <div class="panel-body">
+          <strong>{{challenge.title}}</strong>
+          <br> {{challenge.description | limitTo:200}}
+          <br>
+          <br> Labels: {{challenge.labelCount}}
+          <br>
+          <br>
+          <button class="btn btn-default">Download CSV</button>
+        </div>
+      </div>
+      <div ng-show="!manageCtrl.challenges || manageCtrl.challenges.length == 0">
+        Looks like you haven't created any challenges yet. <a ui-sref="create">Create one now!</a>
+      </div>
+    </div>
+  </div>
+</div>
