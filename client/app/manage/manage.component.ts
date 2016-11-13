@@ -23,6 +23,16 @@ export class ManageComponent {
       console.log(err)
     })
   }
+  downloadCsv(challengeId){
+    console.log('Getting...')
+    this.$http.get('/api/challenges/' + challengeId + '/labels/csv').success(csv => {
+      console.log(csv);
+      return csv;
+    })
+    .error(err => {
+      console.log(err)
+    })
+  }
 }
 
 export default angular.module('geosourcerApp.manage', [uiRouter])

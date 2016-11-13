@@ -4,12 +4,12 @@
   <div class="row">
     <div class="col-md-6">
       <div ng-repeat="challenge in browseCtrl.challenges">
-          <div class="browse-image-container">
+        <div class="browse-image-container">
           <div class="browse-image" style="background-image: url({{challenge.backgroundImageSrc}})">
             <div class="browse-text-container">
               <a ui-sref="challengeStart({challengeId: challenge._id})"><strong>{{challenge.title}}</strong></a>
-              <br><br>
-              {{challenge.description | limitTo: 300}}
+              <br>
+              <br> {{challenge.description | limitTo: 300}}
             </div>
           </div>
         </div>

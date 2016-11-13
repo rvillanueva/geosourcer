@@ -13,6 +13,7 @@
 import jsonpatch from 'fast-json-patch';
 import Challenge from './challenge.model';
 import Label from '../label/label.model';
+var json2csv = require('json2csv');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -102,6 +103,42 @@ export function submitLabels(req, res) {
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
+
+export function getLabels(req, res){
+  /*json2csv({ data: myCars, fields: fields }, function(err, csv) {
+  res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+  res.set('Content-Type', 'text/csv');
+  res.status(200).send(csv);
+});*/
+  return Label.find({'challengeId': req.params.id})
+  .then(respondWithResult(res, 201))
+  .catch(handleError(res));
+}
+
+export function getLabelCsv(req, res){
+  /*
+});*/
+  return Label.find({'challengeId': req.params.id})
+  .then(labels => {
+    var array = [];
+    var fields = ['userId','challengeId','class','geometry',];
+    labels.forEach((label, l) => {
+      array.push({
+        geometry: '<Point><coordinates>' + label.geo.lat + ',' + label.geo.lng + '</coordinates></Point>',
+        class: label.classId,
+        userId: label.userId,
+        challengeId: label.challengeId
+      })
+    })
+    json2csv({ data: array, fields: fields }, function(err, csv) {
+      res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+      res.set('Content-Type', 'text/csv');
+      res.status(200).send(csv);
+    })
+  })
+  .catch(handleError(res));
+}
+
 
 
 // Upserts the given Challenge in the DB at the specified ID

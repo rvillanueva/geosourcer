@@ -1,0 +1,9 @@
+.start-header-container {
+  height: 160px;
+  overflow: hidden;
+  & .start-header-image {
+    height: 200px;
+    background-size: cover;
+    background-position: top;
+  }
+}

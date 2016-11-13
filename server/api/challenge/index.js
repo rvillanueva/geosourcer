@@ -7,12 +7,14 @@ import * as auth from '../../auth/auth.service';
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/manage', auth.isAuthenticated(), controller.index);
-router.get('/:id', auth.isAuthenticated(), controller.show);
+router.get('/manage', controller.index);
+router.get('/:id',  controller.show);
+router.get('/:id/labels', controller.getLabels);
+router.get('/:id/labels/csv', controller.getLabelCsv);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.post('/:id/labels', auth.isAuthenticated(), controller.submitLabels);
-router.put('/:id', auth.isAuthenticated(), controller.upsert);
-router.patch('/:id', auth.isAuthenticated(), controller.patch);
-router.delete('/:id', auth.isAuthenticated(), controller.destroy);
+router.put('/:id',  controller.upsert);
+router.patch('/:id',  controller.patch);
+router.delete('/:id',  controller.destroy);
 
 module.exports = router;

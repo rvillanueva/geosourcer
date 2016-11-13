@@ -7,7 +7,7 @@
       <h3>{{tagCtrl.challenge.title}}</h3>
       <br>
       <h4>Labels</h4>
-      <button class="btn btn-default" style="text-align:left; width: 100%;" ng-repeat="(c, class) in tagCtrl.challenge.classes" ng-class="{'btn-primary': tagCtrl.selectedClassIndex == c, 'btn-default': tagCtrl.selectedClassIndex !== c}" ng-click="tagCtrl.selectedClassIndex = c;">{{class.name}}</button>
+      <button class="btn btn-default" style="text-align:left; width: 100%;" ng-repeat="(c, class) in tagCtrl.challenge.classes" ng-class="{'btn-primary': tagCtrl.selectedClassIndex == c, 'btn-default': tagCtrl.selectedClassIndex !== c}" ng-click="tagCtrl.selectedClassIndex = c;"><img src="{{tagCtrl.icons[c]}}" style="width: 14px;">&nbsp;&nbsp;{{class.name}}</button>
       <br>
       <br>
       <p class="text-muted">

@@ -31,6 +31,13 @@ export class ChallengeTagComponent {
     this.$http = $http;
     this.$q = $q;
     this.target;
+    this.icons = [
+      'assets/images/markers/marker-1.png',
+      'assets/images/markers/marker-2.png',
+      'assets/images/markers/marker-3.png',
+      'assets/images/markers/marker-4.png',
+      'assets/images/markers/marker-5.png'
+    ]
     console.log(this.getChallenge)
     this.getChallenge().then(challenge => {
       this.challenge = challenge;
@@ -75,7 +82,12 @@ export class ChallengeTagComponent {
   }
 
   handleClick(e){
-    var marker = this.L.marker(e.latlng);
+    var myIcon = this.L.icon({
+      iconUrl: this.icons[this.selectedClassIndex],
+      iconSize: [14, 14],
+      iconAnchor: [8, 8],
+    });
+    var marker = this.L.marker(e.latlng, {icon: myIcon});
     marker.on('click', e => {
       this.handleMarkerClick(e);
     });
@@ -148,11 +160,6 @@ export class ChallengeTagComponent {
   }
 
   /*
-  var myIcon = this.L.icon({
-    iconUrl: 'assets/images/my-icon.png',
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-  });
   */
 }
 
