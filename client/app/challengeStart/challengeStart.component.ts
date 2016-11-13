@@ -9,6 +9,8 @@ export class ChallengeStartComponent {
   $http;
   challengeId;
   challenge;
+  mapboxKey;
+  backgroundImageSrc;
   /*@ngInject*/
   constructor($http, $stateParams, appConfig) {
     this.$http = $http;

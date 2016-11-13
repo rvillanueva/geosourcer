@@ -6,6 +6,12 @@ const uiRouter = require('angular-ui-router');
 import routes from './create.routes';
 
 export class CreateComponent {
+  challenge;
+  $http;
+  $state;
+  searchPointText;
+  challengeId;
+  addClassText;
   /*@ngInject*/
   constructor($http, $state) {
     this.challenge = {};
@@ -18,7 +24,7 @@ export class CreateComponent {
     console.log(array)
     var pairs = [];
     var returned = [];
-    array.forEach((text, t){
+    array.forEach((text, t) => {
       var pair = text.split(',');
       pairs.push(pair)
     })

@@ -8,6 +8,8 @@ import routes from './browse.routes';
 export class BrowseComponent {
   $http;
   challenges;
+  mapboxKey;
+  
   /*@ngInject*/
   constructor($http, appConfig) {
     this.$http = $http;

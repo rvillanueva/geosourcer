@@ -17,9 +17,13 @@ export class ChallengeTagComponent {
   $http;
   $q;
   defaultZoom;
+  challengeId;
+  icons;
+  selectedClassIndex;
+  viewCenter;
   /*@ngInject*/
 
-  constructor($http, $q, $stateParams, appConfig) {
+  constructor($http, $q, $stateParams, appConfig, L) {
     this.L = L;
     this.defaultZoom = 16;
     this.mapboxKey = appConfig.mapboxKey;
@@ -115,9 +119,9 @@ export class ChallengeTagComponent {
     console.log(this.markers)
     var posted = {
       labels: [],
-      targetId: this.target_id,
+      targetId: this.target._id,
       challengeId: this.challenge._id,
-      viewCenter: this.viewCenter;
+      viewCenter: this.viewCenter
     }
     this.markers.forEach((marker, m) => {
       var label = {

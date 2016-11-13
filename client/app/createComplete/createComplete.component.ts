@@ -6,6 +6,7 @@ const uiRouter = require('angular-ui-router');
 import routes from './createComplete.routes';
 
 export class CreateCompleteComponent {
+  challengeId;
   /*@ngInject*/
   constructor($stateParams) {
     this.challengeId = $stateParams.challengeId;
