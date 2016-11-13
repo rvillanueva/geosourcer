@@ -1,19 +1,23 @@
 <div class="container">
-  <h2>Browse Challenges</h2>
-  <br>
   <div class="row">
-    <div class="col-md-6">
-      <div ng-repeat="challenge in browseCtrl.challenges">
-        <div class="browse-image-container">
-          <div class="browse-image" style="background-image: url({{challenge.backgroundImageSrc}})">
-            <div class="browse-text-container">
-              <a ui-sref="challengeStart({challengeId: challenge._id})"><strong>{{challenge.title}}</strong></a>
-              <br>
-              <br> {{challenge.description | limitTo: 300}}
-            </div>
+    <div class="col-md-12">
+      <button class="btn btn-default pull-right" ui-sref="create"><i class="fa fa-plus"></i>&nbsp;New Challenge</button>
+      <h2>Browse Challenges</h2>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" ng-repeat="challenge in browseCtrl.challenges">
+      <div class="browse-image-container">
+        <div class="browse-image" style="background-image: url({{challenge.backgroundImageSrc}})">
+          <div class="browse-text-container">
+            <a ui-sref="challengeStart({challengeId: challenge._id})"><strong>{{challenge.title}}</strong></a>
+            <br>
+            <br> {{challenge.description | limitTo: 300}}
           </div>
         </div>
       </div>
+      <br>
     </div>
   </div>
 </div>

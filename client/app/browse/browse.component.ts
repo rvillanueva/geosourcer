@@ -19,7 +19,7 @@ export class BrowseComponent {
     this.$http.get('/api/challenges').success(challenges => {
       this.challenges = challenges;
       this.challenges.forEach((challenge, c) => {
-        challenge.backgroundImageSrc = 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/' + challenge.search.targets[0].geo.lat+ ',' + challenge.search.targets[0].geo.lng + ',14.25,0,0/400x400?access_token=' + this.mapboxKey;
+        challenge.backgroundImageSrc = 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/' + challenge.search.targets[0].geo.lng+ ',' + challenge.search.targets[0].geo.lat + ',12,0,0/400x400?access_token=' + this.mapboxKey;
       })
       console.log(this.challenges)
     })

@@ -20,7 +20,7 @@ export class ChallengeStartComponent {
   getChallenge(){
     this.$http.get('/api/challenges/' + this.challengeId).success(challenge => {
       this.challenge = challenge;
-      this.backgroundImageSrc = 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/' + challenge.search.targets[0].geo.lat+ ',' + challenge.search.targets[0].geo.lng + ',14.25,0,0/800x200?access_token=' + this.mapboxKey;
+      this.backgroundImageSrc = 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/' + challenge.search.targets[0].geo.lng+ ',' + challenge.search.targets[0].geo.lat + ',10,0,0/800x200?access_token=' + this.mapboxKey;
     }).error(err => {
       console.log(err);
     })

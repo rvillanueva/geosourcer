@@ -16,7 +16,7 @@
               {{challenge.description | limitTo:200}}
             </div>
             <div class="col-md-6">
-              <strong>Labels:</strong> {{challenge.labelCount}}
+              <strong>Labels:</strong> <span ng-repeat="(c, class) in challenge.classes">{{class.name}}<span ng-show="c < (challenge.classes.length -1)">,&nbsp;</span></span>
               <br><br>
               <strong>Download</strong>
               <br>
