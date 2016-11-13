@@ -15,7 +15,6 @@
 
 .hero-unit {
   position: relative;
-  padding: 30px 15px;
   height: 400px;
   background-image: url('../assets/images/splash.jpeg');
   background-size: cover;
@@ -24,8 +23,24 @@
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   //background: rgba(46, 31, 116, 0.5);
+  & .image-color-container {
+    padding: 30px 15px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(45, 64, 89, 0.7);
+  }
 }
 
 .navbar-text {
   margin-left: 15px;
+}
+
+.btn-call {
+  background-color: #F07B3F;
+  color: white;
+  text-transform: uppercase;
+  &:hover {
+    background-color: darken(#F07B3F, 8);
+    color: white;
+  }
 }

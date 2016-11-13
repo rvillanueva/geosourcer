@@ -1,9 +1,15 @@
 <div class="container">
-<div class="panel panel-default" ng-repeat="challenge in browseCtrl.challenges">
-  <div class="panel-body">
-    <a ui-sref="challengeStart({challengeId: challenge._id})"><strong>{{challenge.title}}</strong></a>
-    <br>
-    {{challenge.description}}
+  <h2>Browse Challenges</h2>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default" ng-repeat="challenge in browseCtrl.challenges">
+        <div class="panel-body">
+          <a ui-sref="challengeStart({challengeId: challenge._id})"><strong>{{challenge.title}}</strong></a>
+          <br><br>
+          {{challenge.description | limitTo: 300}}
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>

@@ -10,6 +10,19 @@ $fa-font-path: '/assets/fonts/font-awesome/';
  * App-wide Styles
  */
 
+ /**
+ *
+ #2D4059
+#EA5455
+#F07B3F
+#FFD460
+ */
+
+$color-primary: #EA5455;
+$color-2: #2D4059;
+$color-3: #F07B3F;
+$color-4: #FFD460;
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -21,9 +34,47 @@ button:focus, button:active, .btn:focus, .btn:active  {
   outline:none;
 }
 
+.btn {
+  border: 0;
+  border-radius: 0;
+}
+
+.btn-lg {
+  padding: 18px 34px;
+}
+
 .navbar-brand {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.8em;
+  font-size: 2.2em;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-right: 16px;
+}
+
+.navbar-dark {
+  background-color: $color-primary;
+  color: white;
+  & a {
+    color: white;
+  }
+  & .navbar-nav {
+    font-size: 0.9em;
+  }
+  & .navbar-nav > li > a {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  & .navbar-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  & .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+      background-color: darken($color-primary, 6) !important;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
