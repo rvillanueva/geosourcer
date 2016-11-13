@@ -10,13 +10,20 @@
     <div class="col-md-12">
       <div class="panel panel-default" ng-repeat="challenge in manageCtrl.challenges">
         <div class="panel-body">
-          <strong>{{challenge.title}}</strong>
-          <br> {{challenge.description | limitTo:200}}
-          <br>
-          <br> Labels: {{challenge.labelCount}}
-          <br>
-          <br>
-          <button class="btn btn-default">Download CSV</button>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>{{challenge.title}}</h4>
+              {{challenge.description | limitTo:200}}
+            </div>
+            <div class="col-md-6">
+              <strong>Labels:</strong> {{challenge.labelCount}}
+              <br><br>
+              <strong>Download</strong>
+              <br>
+              <button class="btn btn-default">CSV</button>
+            </div>
+          </div>
+
         </div>
       </div>
       <div ng-show="!manageCtrl.challenges || manageCtrl.challenges.length == 0">
