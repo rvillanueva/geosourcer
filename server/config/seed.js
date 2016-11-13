@@ -5,7 +5,10 @@
 
 'use strict';
 import Challenge from '../api/challenge/challenge.model';
+import Label from '../api/label/label.model';
 import User from '../api/user/user.model';
+
+Label.find({}).remove();
 
 Challenge.find({}).remove()
   .then(() => {

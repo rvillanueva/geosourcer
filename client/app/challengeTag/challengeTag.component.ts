@@ -21,7 +21,7 @@ export class ChallengeTagComponent {
 
   constructor($http, $q, $stateParams, appConfig) {
     this.L = L;
-    this.defaultZoom = 17;
+    this.defaultZoom = 16;
     this.mapboxKey = appConfig.mapboxKey;
     this.challengeId = $stateParams.challengeId;
     this.markers = [];

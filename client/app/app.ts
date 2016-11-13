@@ -22,6 +22,8 @@ import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import browse from './browse/browse.component';
 import manage from './manage/manage.component';
+import create from './create/create.component';
+import createComplete from './createComplete/createComplete.component';
 import challengeStart from './challengeStart/challengeStart.component';
 import challengeTag from './challengeTag/challengeTag.component';
 import constants from './app.constants';
@@ -46,6 +48,8 @@ angular.module('geosourcerApp', [
   footer,
   main,
   manage,
+  createComplete,
+  create,
   browse,
   challengeTag,
   challengeStart,
