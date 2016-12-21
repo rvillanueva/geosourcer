@@ -24,6 +24,7 @@ export class ChallengeTagComponent {
   /*@ngInject*/
 
   constructor($http, $q, $stateParams, appConfig) {
+    var L = L || {};
     this.L = L;
     this.defaultZoom = 16;
     this.mapboxKey = appConfig.mapboxKey;

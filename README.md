@@ -1,6 +1,17 @@
 # geosourcer
+[Demo](http://geosourcer.herokuapp.com/)
+[DevPost Submission](https://devpost.com/software/geosourcer);
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.1.0.
+![Geosourcer: Analyze smart, not hard.](/client/assets/images/screenshot1.jpg?raw=true "Optional Title")
+
+## Classify satellite images with crowdsourcing
+Advancements in deep learning and other machine learning image analysis techniques has revolutionized the way we analyze geospatial data. But you know what's still incredibly difficult? Getting labeled training data.
+
+Geosourcer crowdsources image analysis to a large population of volunteers or trained assistants. By distributing this analysis, you can receive labeled data much faster than from a small handful of analysts.
+
+Once this data is received, you can easily upload it into analysis tools to review and build a scalable model. Not only are you increasing your human power by 10x, you can then extend it 1000x with machine learning.
+
+Analyze smart, not hard.
 
 ## Getting Started
 
