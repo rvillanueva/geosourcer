@@ -1,6 +1,6 @@
 # geosourcer
-[Demo](http://geosourcer.herokuapp.com/)
-[DevPost Submission](https://devpost.com/software/geosourcer);
+- [Demo](http://geosourcer.herokuapp.com/)
+- [DevPost Submission](https://devpost.com/software/geosourcer)
 
 ![Geosourcer: Analyze smart, not hard.](/client/assets/images/screenshot1.png?raw=true "Optional Title")
 
