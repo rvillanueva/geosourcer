@@ -2,7 +2,7 @@
 [Demo](http://geosourcer.herokuapp.com/)
 [DevPost Submission](https://devpost.com/software/geosourcer);
 
-![Geosourcer: Analyze smart, not hard.](/client/assets/images/screenshot1.jpg?raw=true "Optional Title")
+![Geosourcer: Analyze smart, not hard.](/client/assets/images/screenshot1.png?raw=true "Optional Title")
 
 ## Classify satellite images with crowdsourcing
 Advancements in deep learning and other machine learning image analysis techniques has revolutionized the way we analyze geospatial data. But you know what's still incredibly difficult? Getting labeled training data.
